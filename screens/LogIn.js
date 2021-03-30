@@ -13,10 +13,9 @@ export default function LogIn({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <Text>Log In</Text> */}
       <View style={{ width: '70%' }}>
+        <Text style={styles.title}>Logga in</Text>
         <TextInput
-          style={styles.input}
           placeholder="E-mail adress"
           placeholderTextColor="#000"
           value={email}
@@ -39,13 +38,18 @@ export default function LogIn({ navigation }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2f084a',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+  },
+  title: {
+    margin: 20,
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#FFF',
   },
 });
