@@ -1,10 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function LogIn() {
+export default function LogIn({ navigation }) {
+  const submit = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <View style={styles.container}>
       <Text>Log In</Text>
+      <Button title="Submit" onPress={submit}></Button>
     </View>
   );
 }
