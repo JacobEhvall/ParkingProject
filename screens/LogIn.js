@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LogIn({ navigation }) {
@@ -34,7 +34,13 @@ export default function LogIn({ navigation }) {
           style={{ backgroundColor: 'lightgray', padding: 12, margin: 15 }}
         />
         <TouchableOpacity>
-          <Text style={styles.password}>Glömt ditt lösenord?</Text>
+          <Text style={styles.underlinedtext}>Glömt ditt lösenord?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.underlinedtext}>Ny? Registera dig nu!</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.roundedButton}>
+          <Image source={require('../assets/arrow.png')} style={styles.title} />
         </TouchableOpacity>
       </View>
     </View>
@@ -54,11 +60,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFF',
   },
-  password: {
-    margin: 10,
+  underlinedtext: {
+    margin: 2,
     color: '#FFF',
     padding: 10,
-    marginLeft: 50,
     textDecorationLine: 'underline',
+  },
+  roundedButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: 'white',
+    alignSelf: 'flex-end',
   },
 });
