@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LogIn({ navigation }) {
   const [email, setEmail] = useState('');
@@ -33,7 +33,9 @@ export default function LogIn({ navigation }) {
           onChangeText={setPassword}
           style={{ backgroundColor: 'lightgray', padding: 12, margin: 15 }}
         />
-        <Button title="Submit" onPress={submit}></Button>
+        <TouchableOpacity>
+          <Text style={styles.password}>Glömt ditt lösenord?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -51,5 +53,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     color: '#FFF',
+  },
+  password: {
+    margin: 10,
+    color: '#FFF',
+    padding: 10,
+    marginLeft: 50,
+    textDecorationLine: 'underline',
   },
 });
