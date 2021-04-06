@@ -5,7 +5,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LogIn({ navigation }) {
   //const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  //const [password, setPassword] = useState('');
 
   const submit = () => {
     navigation.navigate('Registrera');
@@ -16,6 +16,7 @@ export default function LogIn({ navigation }) {
       <View style={{ width: '70%' }}>
         <Text style={styles.title}>Logga in</Text>
         <TextInput
+          autoFocus={true}
           placeholder="E-mail adress"
           placeholderTextColor="#000"
           //value={email}
@@ -29,8 +30,8 @@ export default function LogIn({ navigation }) {
         <TextInput
           placeholder="Lösenord"
           placeholderTextColor="#000"
-          value={password}
-          onChangeText={setPassword}
+          //value={password}
+          // onChangeText={setPassword}
           style={{ backgroundColor: 'lightgray', padding: 12, margin: 15 }}
         />
         <TouchableOpacity>
@@ -40,7 +41,10 @@ export default function LogIn({ navigation }) {
           <Text style={styles.underlinedtext}>Ny? Registera dig nu!</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.roundedButton}>
-          <Image source={require('../assets/arrow.png')} style={styles.title} />
+          <Image
+            source={require('../assets/arrow.png')}
+            style={styles.roundedButton}
+          />
         </TouchableOpacity>
       </View>
     </View>
