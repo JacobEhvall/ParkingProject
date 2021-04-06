@@ -4,11 +4,11 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LogIn({ navigation }) {
-  const [email, setEmail] = useState('');
+  //const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const submit = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Registrera');
   };
 
   return (
@@ -18,8 +18,8 @@ export default function LogIn({ navigation }) {
         <TextInput
           placeholder="E-mail adress"
           placeholderTextColor="#000"
-          value={email}
-          onChangeText={setEmail}
+          //value={email}
+          //onChangeText={setEmail}
           style={{
             backgroundColor: 'lightgray',
             padding: 12,
@@ -36,7 +36,7 @@ export default function LogIn({ navigation }) {
         <TouchableOpacity>
           <Text style={styles.underlinedtext}>Glömt ditt lösenord?</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={submit}>
           <Text style={styles.underlinedtext}>Ny? Registera dig nu!</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.roundedButton}>
