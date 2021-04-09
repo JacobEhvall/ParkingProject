@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LogIn from './screens/LogIn';
 import Registrera from './screens/Registrera';
+import PhoneNumberRegister from './screens/PhoneNumberRegister';
+import VerifySmsCode from './screens/VerifySmsCode';
 
 const Stack = createStackNavigator();
 
@@ -13,14 +15,24 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LogIn">
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="LogIn"
           component={LogIn}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="Registrera"
           component={Registrera}
+        />
+        <Stack.Screen
+          options={{ headerShown: true }}
+          name="PhoneNumberRegister"
+          component={PhoneNumberRegister}
+        />
+        <Stack.Screen
+          options={{ headerShown: true }}
+          name="VerifySmsCode"
+          component={VerifySmsCode}
         />
       </Stack.Navigator>
     </NavigationContainer>

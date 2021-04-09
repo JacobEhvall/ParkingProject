@@ -10,53 +10,28 @@ import {
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function Registera({ navigation }) {
-  const phonenumber = () => {
-    navigation.navigate('PhoneNumberRegister');
+export default function PhoneNumberRegister({ navigation }) {
+  const submit = () => {
+    navigation.navigate('VerifySmsCode');
   };
 
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
         <View style={styles.registrera}>
-          <Text style={styles.title}>Fyll i ditt namn</Text>
+          <Text style={styles.title}>Fyll i ditt telefonnummer</Text>
           <TextInput
-            placeholder="Förnamn"
+            keyboardType="number-pad"
+            returnKeyLabel="Hello"
+            returnKeyType="done"
             placeholderTextColor="#000"
             style={{
               backgroundColor: 'lightgray',
               padding: 12,
               margin: 10,
             }}
-          />
-          <TextInput
-            placeholder="Efternamn"
-            placeholderTextColor="#000"
-            style={{
-              backgroundColor: 'lightgray',
-              padding: 12,
-              margin: 10,
-            }}
-          />
-          <TextInput
-            placeholder="E-mail adress"
-            placeholderTextColor="#000"
-            style={{
-              backgroundColor: 'lightgray',
-              padding: 12,
-              margin: 10,
-            }}
-          />
-          <TextInput
-            placeholder="Lösenord"
-            placeholderTextColor="#000"
-            style={{
-              backgroundColor: 'lightgray',
-              padding: 12,
-              margin: 10,
-            }}
-          />
-          <TouchableOpacity onPress={phonenumber}>
+          ></TextInput>
+          <TouchableOpacity onPress={submit}>
             <Image
               source={require('../assets/arrow.png')}
               style={styles.roundedButton}
@@ -84,14 +59,16 @@ const styles = StyleSheet.create({
   title: {
     margin: 20,
     padding: 20,
-    fontSize: 30,
+    fontSize: 28,
     textAlign: 'center',
     color: '#FFF',
   },
   roundedButton: {
+    margin: 20,
     width: 60,
     height: 60,
     borderRadius: 100,
+    padding: 20,
     backgroundColor: 'white',
     alignSelf: 'flex-end',
   },
