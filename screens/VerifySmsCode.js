@@ -11,20 +11,46 @@ import {
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function VerifySmsCode() {
+  // let textInput = useRef(null);
+  const numberInput = 4;
+  // const [internalVal, setInterVal] = useState('');
+
+  // const onChangeText = (val) => {};
+
+  // useEffect(() => {
+  //   TextInput.focus();
+  // }, []);
+
   return (
     <View style={styles.container}>
-      <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
-        <View style={styles.registrera}>
-          <Text style={styles.title}>Skriv in den kod du fick på SMS</Text>
-
-          <View style={styles.cellView}></View>
-          <TouchableOpacity>
-            <Image
-              source={require('../assets/arrow.png')}
-              style={styles.roundedButton}
-            />
-          </TouchableOpacity>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : null}
+        style={styles.registrera}
+      >
+        <Text style={styles.title}>Skriv in den kod du fick på SMS</Text>
+        <View>
+          <TextInput
+            //ref={(input) => (textInput = input)}
+            //onChangeText={onChangeText}
+            //style={{ width: 0, height: 0 }}
+            //value={number}
+            //maxLength={numberInput}
+            returnKeyType="done"
+          />
         </View>
+        <View style={styles.containerInput}>
+          {Array(numberInput)
+            .fill()
+            .map((data, index) => (
+              <View style={styles.cellView}></View>
+            ))}
+        </View>
+        <TouchableOpacity>
+          <Image
+            source={require('../assets/arrow.png')}
+            style={styles.roundedButton}
+          />
+        </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
   );
@@ -59,10 +85,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'flex-end',
   },
+  containerInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   cellView: {
     paddingVertical: 11,
     width: 40,
     margin: 5,
-    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    borderColor: 'white',
   },
 });

@@ -22,7 +22,7 @@ export default function PhoneNumberRegister({ navigation }) {
           <Text style={styles.title}>Fyll i ditt telefonnummer</Text>
           <TextInput
             keyboardType="number-pad"
-            returnKeyLabel="Hello"
+            returnKeyLabel="Done"
             returnKeyType="done"
             placeholderTextColor="#000"
             style={{

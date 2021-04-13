@@ -10,7 +10,7 @@ import {
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function Lösenord({ navigation }) {
-  const submit = () => {
+  const button = () => {
     navigation.navigate('ChoosePassword');
   };
 
@@ -28,7 +28,7 @@ export default function Lösenord({ navigation }) {
               margin: 10,
             }}
           ></TextInput>
-          <TouchableOpacity onPress={submit}>
+          <TouchableOpacity onPress={button}>
             <Text style={styles.lösenord}>Skicka nytt lösenord</Text>
           </TouchableOpacity>
         </View>
