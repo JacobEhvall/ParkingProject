@@ -11,6 +11,10 @@ export default function LogIn({ navigation }) {
     navigation.navigate('Registrera');
   };
 
+  const password = () => {
+    navigation.navigate('Lösenord');
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ width: '70%' }}>
@@ -34,7 +38,7 @@ export default function LogIn({ navigation }) {
           // onChangeText={setPassword}
           style={{ backgroundColor: 'lightgray', padding: 12, margin: 15 }}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={password}>
           <Text style={styles.underlinedtext}>Glömt ditt lösenord?</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={submit}>

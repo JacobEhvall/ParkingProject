@@ -7,6 +7,8 @@ import LogIn from './screens/LogIn';
 import Registrera from './screens/Registrera';
 import PhoneNumberRegister from './screens/PhoneNumberRegister';
 import VerifySmsCode from './screens/VerifySmsCode';
+import Lösenord from './screens/Lösenord';
+import ChoosePassword from './screens/ChoosePassword';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,16 @@ export default function App() {
           options={{ headerShown: true }}
           name="VerifySmsCode"
           component={VerifySmsCode}
+        />
+        <Stack.Screen
+          options={{ headerShown: true }}
+          name="Lösenord"
+          component={Lösenord}
+        />
+        <Stack.Screen
+          options={{ headerShown: true }}
+          name="ChoosePassword"
+          component={ChoosePassword}
         />
       </Stack.Navigator>
     </NavigationContainer>
