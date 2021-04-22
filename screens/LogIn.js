@@ -1,18 +1,39 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { useState, useContext } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import 'react-native-gesture-handler';
+import { AuthContext } from '../context/AuthContext';
 
-export default function LogIn({ navigation }) {
-  //const [email, setEmail] = useState('');
-  //const [password, setPassword] = useState('');
+function LogIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
-  const submit = () => {
-    navigation.navigate('Registrera');
+  const { logIn } = useContext(AuthContext);
+
+  // const submit = () => {
+  //   navigation.navigate('Registrera');
+  // };
+
+  const secretword = () => {
+    navigation.navigate('Lösenord');
   };
 
-  const password = () => {
-    navigation.navigate('Lösenord');
+  const continueButton = () => {
+    console.log('submitting login');
+    logIn(email, password);
+  };
+
+  const registerUser = () => {
+    navigation.navigate('Registrera');
   };
 
   return (
@@ -23,8 +44,8 @@ export default function LogIn({ navigation }) {
           autoFocus={true}
           placeholder="E-mail adress"
           placeholderTextColor="#000"
-          //value={email}
-          //onChangeText={setEmail}
+          value={email}
+          onChangeText={setEmail}
           style={{
             backgroundColor: 'lightgray',
             padding: 12,
@@ -34,26 +55,29 @@ export default function LogIn({ navigation }) {
         <TextInput
           placeholder="Lösenord"
           placeholderTextColor="#000"
-          //value={password}
-          // onChangeText={setPassword}
+          value={password}
+          onChangeText={setPassword}
           style={{ backgroundColor: 'lightgray', padding: 12, margin: 15 }}
         />
-        <TouchableOpacity onPress={password}>
+        <TouchableOpacity onPress={secretword}>
           <Text style={styles.underlinedtext}>Glömt ditt lösenord?</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={submit}>
+        <TouchableOpacity onPress={registerUser}>
           <Text style={styles.underlinedtext}>Ny? Registera dig nu!</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.roundedButton}>
           <Image
             source={require('../assets/arrow.png')}
             style={styles.roundedButton}
+            onPress={continueButton}
           />
         </TouchableOpacity>
       </View>
     </View>
   );
 }
+export default LogIn;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -82,3 +106,4 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
 });
+//https://www.youtube.com/watch?v=ePwViZY9l4A&ab_channel=AnbuZHobbieZ

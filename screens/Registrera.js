@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -9,10 +9,28 @@ import {
   Image,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+//import * as firebase from 'firebase';
 
-export default function Registera({ navigation }) {
-  const phonenumber = () => {
-    navigation.navigate('PhoneNumberRegister');
+export default function Registrera({ navigation }) {
+  const [name, setName] = useState('');
+  const [lastName, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const phonenumber = () => {
+  //   navigation.navigate('PhoneNumberRegister');
+  // };
+
+  const SignUp = async () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        firebase.database().ref('/ParkingApp').child().set({
+          name: name,
+          email: email,
+        });
+      });
   };
 
   return (
@@ -22,6 +40,8 @@ export default function Registera({ navigation }) {
           <Text style={styles.title}>Fyll i ditt namn</Text>
           <TextInput
             placeholder="Förnamn"
+            value={name}
+            onChangeText={setName}
             placeholderTextColor="#000"
             style={{
               backgroundColor: 'lightgray',
@@ -31,6 +51,8 @@ export default function Registera({ navigation }) {
           />
           <TextInput
             placeholder="Efternamn"
+            value={lastName}
+            onChangeText={setLastname}
             placeholderTextColor="#000"
             style={{
               backgroundColor: 'lightgray',
@@ -41,6 +63,8 @@ export default function Registera({ navigation }) {
           <TextInput
             placeholder="E-mail adress"
             placeholderTextColor="#000"
+            value={email}
+            onChangeText={setEmail}
             style={{
               backgroundColor: 'lightgray',
               padding: 12,
@@ -49,6 +73,9 @@ export default function Registera({ navigation }) {
           />
           <TextInput
             placeholder="Lösenord"
+            type="Password"
+            value={password}
+            onChangeText={setPassword}
             placeholderTextColor="#000"
             style={{
               backgroundColor: 'lightgray',
@@ -56,7 +83,7 @@ export default function Registera({ navigation }) {
               margin: 10,
             }}
           />
-          <TouchableOpacity onPress={phonenumber}>
+          <TouchableOpacity onPress={() => SignUp()}>
             <Image
               source={require('../assets/arrow.png')}
               style={styles.roundedButton}
