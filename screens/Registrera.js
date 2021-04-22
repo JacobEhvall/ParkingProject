@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-//import * as firebase from 'firebase';
+import { auth } from '../firebase';
 
 export default function Registrera({ navigation }) {
   const [name, setName] = useState('');
@@ -21,16 +21,21 @@ export default function Registrera({ navigation }) {
   //   navigation.navigate('PhoneNumberRegister');
   // };
 
-  const SignUp = async () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        firebase.database().ref('/ParkingApp').child().set({
-          name: name,
-          email: email,
-        });
-      });
+  const SignUp = () => {
+    auth.createUserWithEmailAndPassword(email, password).then(() => {
+      console.log('user created');
+    });
+    //db.collection('')
+
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then(() => {
+    //     firebase.db().ref('/ParkingApp').child().set({
+    //       name: name,
+    //       email: email,
+    //     });
+    //   });
   };
 
   return (
@@ -83,7 +88,7 @@ export default function Registrera({ navigation }) {
               margin: 10,
             }}
           />
-          <TouchableOpacity onPress={() => SignUp()}>
+          <TouchableOpacity onPress={SignUp}>
             <Image
               source={require('../assets/arrow.png')}
               style={styles.roundedButton}
