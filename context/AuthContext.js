@@ -11,6 +11,8 @@ export default function AuthContextProvider({ children }) {
     auth.onAuthStateChanged((user) => {
       console.log('user:', user);
       setUser(user);
+      let uid = user.uid;
+      console.log(uid);
     });
 
     return unsubscribe;

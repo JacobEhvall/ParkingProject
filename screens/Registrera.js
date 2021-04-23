@@ -9,13 +9,16 @@ import {
   Image,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import UserModel from '../UserModel';
 import { auth } from '../firebase';
+import { db } from '../firebase';
 
-export default function Registrera({ navigation }) {
+export default function Registrera() {
   const [name, setName] = useState('');
   const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [currentUser, setCurrentUser] = useState('');
 
   // const phonenumber = () => {
   //   navigation.navigate('PhoneNumberRegister');
@@ -23,19 +26,30 @@ export default function Registrera({ navigation }) {
 
   const SignUp = () => {
     auth.createUserWithEmailAndPassword(email, password).then(() => {
+      // setCurrentUser(auth.currentUser);
+      // console.log('UID', uid.apiKey);
+      let currentUser = auth.currentUser;
+      let uid = currentUser.uid;
+      saveUserData(name, lastName, email, password, uid);
       console.log('user created');
     });
-    //db.collection('')
+    const saveUserData = (name, lastName, email, password, uid) => {
+      const user = {
+        name: name,
+        lastName: lastName,
+        email: email,
+        password: password,
+        phoneNumber: '',
+        userIsNew: true,
+      };
+      const car = {
+        carName: '',
+        regNumber: '',
+      };
 
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(() => {
-    //     firebase.db().ref('/ParkingApp').child().set({
-    //       name: name,
-    //       email: email,
-    //     });
-    //   });
+      db.collection('users').add(user);
+      // db.collection('users').document(uid).collection('myCars').add(car);
+    };
   };
 
   return (
