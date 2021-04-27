@@ -30,15 +30,14 @@ export default function Registrera() {
       // console.log('UID', uid.apiKey);
       let currentUser = auth.currentUser;
       let uid = currentUser.uid;
-      saveUserData(name, lastName, email, password, uid);
+      saveUserData(name, lastName, email, uid);
       console.log('user created');
     });
-    const saveUserData = (name, lastName, email, password, uid) => {
+    const saveUserData = (name, lastName, email, uid) => {
       const user = {
         name: name,
         lastName: lastName,
         email: email,
-        password: password,
         phoneNumber: '',
         userIsNew: true,
       };
